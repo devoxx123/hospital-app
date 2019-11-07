@@ -1,0 +1,117 @@
+version: '3'
+services:
+
+   config-server:
+     build:
+       context: ./microservices-config-service
+       dockerfile: Dockerfile
+     image:  msa-config-server
+     mem_limit: 512M
+     ports:
+     - 8888:8888
+      
+
+   discovery-server:
+    build:
+       context: ./microservices-discovery-service
+       dockerfile: Dockerfile
+    image: msa-discovery-server
+    mem_limit: 512M
+    depends_on:
+      - config-server
+    ports:
+     - 8761:8761
+     
+   admin-server:
+    build:
+      context: ./microsrvices-admin-service
+      dockerfile: Dockerfile
+    image: msa-admin-server
+    mem_limit: 512M
+    depends_on:
+      - config-server
+      - discovery-server
+    ports:
+    - 9090:9090
+
+   department-service:
+     build:
+       context: ./microservices-department-service
+       dockerfile: Dockerfile
+     image: msa-department-server
+     mem_limit: 512M
+     depends_on:
+      - config-server
+      - discovery-server
+     ports:
+      - 8081:8081
+
+   visits-service:
+     build:
+       context: ./microservices-visits-service
+       dockerfile: Dockerfile
+     image: msa-visits-server  
+     mem_limit: 512M
+     depends_on:
+      - config-server
+      - discovery-server
+     ports:
+      - 8082:8082
+
+   vets-service:
+      build:
+        context: ./microservices-vets-service
+        dockerfile: Dockerfile
+      image: msa-vets-server
+      mem_limit: 512M
+      depends_on:
+       - config-server
+       - discovery-server
+      ports:
+       - 8083:8083
+
+   api-gateway:
+      build:
+        context: ./microservices-gateway-service
+        dockerfile: Dockrfile
+      image: msa-gateway-server
+      mem_limit: 512M
+      depends_on:
+       - config-server
+       - discovery-server
+      ports:
+       - 8080:8080
+
+   tracing-server:
+       build:
+         context: ./microservices-zipkin-service
+         dockerfile: Dockerfile
+       image: msa-zipkin-server
+       mem_limit: 512M
+       ports:
+        - 9411:9411
+
+   hystrix-dashboard:
+       build:
+          context: ./microservices-hystrix-service
+          dockerfile: Dockerfile
+       image: msa-hystrix-server
+       mem_limit: 512M
+       depends_on:
+        - config-server
+        - discovery-server
+       ports:
+        - 7979:7979
+        
+   auth-server:
+        build: 
+          context: ./microservices-auth-service
+          dockerfile: Dockerfile
+        image: msa-auth-server
+        mem_limit: 512M
+        depends_on:
+          - config-server
+          - discovery-server
+        ports:
+        - 9999:9999
+        

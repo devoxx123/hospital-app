@@ -1,0 +1,13 @@
+management:
+  endpoints:
+      web:
+        exposure:
+          include: hystrix.stream
+
+          
+          
+          
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

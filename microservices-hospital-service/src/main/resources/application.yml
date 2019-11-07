@@ -1,0 +1,23 @@
+spring:
+   jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      dialect: org.hibernate.dialect.MySQLDialect
+      
+   datasource:
+        url: jdbc:mysql://localhost:3306/oauth_db
+        username: root
+        password: welcome_123!
+        driver-class-name: com.mysql.jdbc.Driver
+        maxActive: 10
+        max-idle: 5
+        min-idle: 1
+        testWhileIdle: true
+        test-on-borrow: true
+        validationQuery: SELECT 1
+        timeBetweenEvictionRunsMillis: 5000
+        min-evictable-idle-time-millis: 60000
+        
+        
