@@ -1,1 +1,55 @@
 
+Design Patterns in Microservices
+---------------------------------
+
+Below are the Microservices Design Patterns
+
+Decomposition Patterns
+ Decompose by Business Capability
+ Decompose by Subdomain
+ Decompose by Transactions
+ Strangler Patterns
+ Bulkhead Patterns
+ Sidecar Pattern
+ 
+Integration Pattern
+  API Gateway Pattern
+  Aggregator Pattern
+  Proxy Pattern
+  Gateway Routing Pattern
+  Chained Microservices Pattern
+  Branch Pattern
+  Client Side UI Composition Pattern
+  
+Datebase Pattern
+  Datebase per Service
+  Shared Database Per Service
+  CQRS
+  Event Sourcing
+  Saga Pattern
+  
+Observability Patterns
+  Log Aggregation
+  Performence Metrics
+  Distributed Tracking
+  Health Check
+  
+Cross-Cutting Patterns
+  External Configuration
+  Service Discovery Pattern
+  Circuit Breaker Pattern
+  Blue-Green Deployment Pattern
+
+Major Challenges in Microservices
+  These are the Ten major challenges of Microservices architecure and Proposed Solutions:
+  1)Data Synchronization
+  2)Security
+  3)Services Communication
+  4)Discovery
+  5)Data Staleness
+  6)Distributed Logging,Cyclic Dependencies of Services and Debugging
+  7)Testing
+  8)Monitoring & Performence
+  9)Devops Support
+  10)Fault Tolerance
+  
